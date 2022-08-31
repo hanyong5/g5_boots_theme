@@ -127,6 +127,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                 ?>
                 <li class="gnb_1dli <?php echo $add_class; ?>" style="z-index:<?php echo $gnb_zindex--; ?>">
                     <a href="<?php echo $row['me_link']; ?>" target="_<?php echo $row['me_target']; ?>" class="gnb_1da"><?php echo $row['me_name'] ?></a>
+                    
                     <?php
                     $k = 0;
                     foreach( (array) $row['sub'] as $row2 ){
@@ -144,6 +145,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                     if($k > 0)
                         echo '</ul></div>'.PHP_EOL;
                     ?>
+                    
                 </li>
                 <?php
                 $i++;

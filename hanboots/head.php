@@ -25,7 +25,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container">
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<? echo G5_URL?>">
             <img src="<? echo G5_THEME_IMG_URL ?>/logo.svg" alt="" style="width:180px">
         </a>
 
@@ -47,8 +47,41 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                     if( empty($row) ) continue;
                     
                 ?>
-                    <li  class="nav-item">
-                        <a href="<?php echo $row['me_link']; ?>" target="_<?php echo $row['me_target']; ?>" class="nav-link"><?php echo $row['me_name'] ?></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="<?php echo $row['me_link']; ?>" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" target="_<?php echo $row['me_target']; ?>">
+                            <?php echo $row['me_name'] ?>
+                        </a>
+                        <!-- 서브 -->
+                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul> -->
+
+                        <?php
+                        $k = 0;
+                        foreach( (array) $row['sub'] as $row2 ){
+
+                            if( empty($row2) ) continue; 
+
+                            if($k == 0)
+                                echo '<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">'.PHP_EOL;
+                        ?>
+
+                            <li >
+                                <a href="<?php echo $row2['me_link']; ?>" target="_<?php echo $row2['me_target']; ?>"  class="dropdown-item">
+                                    <?php echo $row2['me_name'] ?>
+                                </a>
+                            </li>
+
+                        <?php
+                        $k++;
+                        }   //end foreach $row2
+
+                        if($k > 0)
+                            echo '</ul>'.PHP_EOL;
+                        ?>
+                        <!-- 서브 -->
                     </li>
                 <?php
                 $i++;
@@ -58,6 +91,9 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 
 
             </ul>
+
+            
+
 
         </div>
   </div>
@@ -74,4 +110,12 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 <hr>
 
 <!-- 콘텐츠 시작 { -->
-<div class="container">
+
+<? if(defined('_INDEX_')) { ?> 
+    <div class="container_wr bg-info">
+<? }else{?>
+    <div class="container bg-info">
+<?}?>
+
+
+    

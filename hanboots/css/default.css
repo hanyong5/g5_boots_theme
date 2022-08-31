@@ -60,7 +60,7 @@ border:1px solid #558ab7 !important;
 
 
 /* 메인메뉴 */
-.nav-item a{font-size: 1.6em;font-weight: bold;}
+.nav-item > a{font-size: 1.6em;font-weight: bold;}
 
 
 /* 중간 레이아웃 */
