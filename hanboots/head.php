@@ -111,10 +111,27 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 
 <!-- 콘텐츠 시작 { -->
 
+<? if(!defined('_INDEX_')) { ?> 
+   <div class="subView" id="page_title">
+
+    <div class="txtWrap">
+        <h2 class="loc1D stitle text-white locTitle"></h2>
+    </div>
+
+   </div>
+<? }?>
+
+
+
 <? if(defined('_INDEX_')) { ?> 
-    <div class="container_wr bg-info">
+    <div class="container_wr"> <!-- full -->
 <? }else{?>
-    <div class="container bg-info">
+    <div class="container position-relative"> <!-- 1400 -->
+        <h2 id="container_title" class="stitle text-center py-3">
+            <span title="<?php echo get_text($g5['title']); ?>">
+            <?php echo get_head_title($g5['title']); ?></span>
+        </h2>
+
 <?}?>
 
 
