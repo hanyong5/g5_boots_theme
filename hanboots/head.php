@@ -21,7 +21,11 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 ?>
 
 <!-- 상단 시작 { -->
-
+    <?php
+    if(defined('_INDEX_')) { // index에서만 실행
+        include G5_BBS_PATH.'/newwin.inc.php'; // 팝업레이어
+    }
+    ?>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container">
 
@@ -112,10 +116,19 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 <!-- 콘텐츠 시작 { -->
 
 <? if(!defined('_INDEX_')) { ?> 
-   <div class="subView" id="page_title">
+   <div class="container rounded-5 subView" id="page_title">
 
     <div class="txtWrap">
-        <h2 class="loc1D stitle text-white locTitle"></h2>
+        <h2 class="loc1D stitle text-white locTitle text-center"></h2>
+        <div class="p-3 px-4 bg-dark rounded-5">
+            <ul class="d-flex text-white gap-2">
+                <li><img src="<? echo G5_THEME_IMG_URL ?>/home_icon_white.png" alt=""></li>
+                <li>></li>
+                <li class="loc1D"></li>
+                <li>></li>
+                <li><?php echo get_head_title($g5['title']); ?></li>
+            </ul>
+        </div>
     </div>
 
    </div>

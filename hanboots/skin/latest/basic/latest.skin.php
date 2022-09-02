@@ -11,6 +11,7 @@ $list_count = (is_array($list) && $list) ? count($list) : 0;
     <ul>
     <?php for ($i=0; $i<$list_count; $i++) {  ?>
         <li class="basic_li">
+            <div>
             <?php
             if ($list[$i]['icon_secret']) echo "<i class=\"fa fa-lock\" aria-hidden=\"true\"></i><span class=\"sound_only\">비밀글</span> ";
 
@@ -35,8 +36,9 @@ $list_count = (is_array($list) && $list) ? count($list) : 0;
             <span class=\"lt_cmt\"><span class=\"sound_only\">댓글</span>".$list[$i]['comment_cnt']."</span>";
 
             ?>
+            </div>
             <div class="lt_info">
-				<span class="lt_nick"><?php echo $list[$i]['name'] ?></span>
+				<!-- <span class="lt_nick"><?php echo $list[$i]['name'] ?></span> -->
             	<span class="lt_date"><?php echo $list[$i]['datetime2'] ?></span>              
             </div>
         </li>
