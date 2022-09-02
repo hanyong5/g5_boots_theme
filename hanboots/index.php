@@ -53,19 +53,43 @@ include_once(G5_THEME_PATH.'/head.php');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
-    .prev,.next{cursor: pointer;}
-    img.prev,img.next{position: absolute;top: 50%;transform:translateY(-50%)}
-    img.prev{left: -50px;}
-    img.next{right: -50px;}
+    .slide1 .prev,.slide1 .next{cursor: pointer;}
+    .slide1 img.prev,img.next{position: absolute;top: 50%;transform:translateY(-50%)}
+    .slide1 img.prev{left: -50px;}
+    .slide1 img.next{right: -50px;}
     .slickslide1 .sItem{
         padding: 15px;opacity: 0.5;transition:0.3s;
         transform:scale(0.8)
     }
     .slickslide1 .sItem.slick-center{padding: 15px;opacity: 1;transform:scale(1)}
+
+
+
+
+    .slide2 .prev,.slide2 .next{cursor: pointer;}
+    .slide2 img.prev,img.next{position: absolute;top: 50%;transform:translateY(-50%)}
+    .slide2 img.prev{left: -50px;}
+    .slide2 img.next{right: -50px;}
+
+    .slickslide2 .sItem{margin: 0 10px;}
+
+    .slide2 .sItem{position: relative;border-radius:10px;overflow: hidden;}
+    .slide2 .sItem .txt{
+        position: absolute;
+        width: 100%;height: 100%;
+        top: 0;left: 0;background-color:rgba(0,0,0,0.3);
+          
+    }
+    .slide2 .sItem .txt a{
+        display: flex;height: 100%;
+        justify-content: center;align-items: center;
+        color:white;font-size:2em
+    }
+    /* .slickslide2 .sItem.slick-center{padding: 15px;opacity: 1;transform:scale(1)} */
  
 </style>
 
-<div class="container position-relative">
+<div class="container position-relative slide1">
   <img src="<?php echo G5_THEME_IMG_URL?>/prev.png" alt="" class="prev d-none d-md-block" >
   <img src="<?php echo G5_THEME_IMG_URL?>/next.png" alt="" class="next d-none d-md-block">
   <div class="slickslide1">
@@ -94,12 +118,31 @@ include_once(G5_THEME_PATH.'/head.php');
   </div>
 </div>
 
+
+<div class="container position-relative slide2">
+    <img src="<?php echo G5_THEME_IMG_URL?>/prev.png" alt="" class="prev d-none d-md-block" >
+    <img src="<?php echo G5_THEME_IMG_URL?>/next.png" alt="" class="next d-none d-md-block">
+    <div class="slickslide2">
+        <?php
+            echo latest('theme/pic_hanyong5', 'gallery', 7, 23);		
+        ?>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 <script>
     $('.slickslide1').slick({
     centerMode: true,
-    slidesToShow: 3,
-    nextArrow:$('.next'),
-    prevArrow:$('.prev'),
+    slidesToShow: 5,
+    nextArrow:$('.slide1 .next'),
+    prevArrow:$('.slide1 .prev'),
     responsive: [
         {
         breakpoint: 768,
@@ -117,7 +160,31 @@ include_once(G5_THEME_PATH.'/head.php');
         }
     ]
     });
-</script>
 
+
+    $('.slickslide2').slick({
+    centerMode: true,
+    slidesToShow: 5,
+    nextArrow:$('.slide2 .next'),
+    prevArrow:$('.slide2 .prev'),
+    responsive: [
+        {
+        breakpoint: 768,
+        settings: {
+            centerMode: true,
+            slidesToShow: 1
+        }
+        },
+        {
+        breakpoint: 480,
+        settings: {
+            centerMode: true,
+            slidesToShow: 1
+        }
+        }
+    ]
+    });
+    
+</script>
 <?php
 include_once(G5_THEME_PATH.'/tail.php');
